@@ -117,8 +117,11 @@ package() {
 }
 
 upload() {
+  echo "Start uploading ..."
   tmpDir=$(mktemp -d)
   pushd $tmpDir >& /dev/null
+
+  echo "Clone ..."
 
   git clone ${REPO_URL}
   cd ${REPOSITORY}
@@ -126,6 +129,8 @@ upload() {
   git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
   git remote set-url origin ${REPO_URL}
   git checkout ${BRANCH}
+
+  echo "checkout ${BRANCH} ..."
 
   charts=$(cd ${CHARTS_TMP_DIR} && ls *.tgz | xargs)
 
