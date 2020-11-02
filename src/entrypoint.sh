@@ -71,6 +71,7 @@ main() {
 
   locate
   download
+  helm init --client-only
   dependencies
   if [[ "$LINTING" != "off" ]]; then
     lint
